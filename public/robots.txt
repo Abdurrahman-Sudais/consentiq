@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://consentiq.site/sitemap.xml
