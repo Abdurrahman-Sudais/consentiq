@@ -9,6 +9,8 @@ const site = {
   email: 'samuel@consentiq.site',
   team: [
     {name: 'Samuel Nnamdi', role: 'Founder', initials: 'SN', bio: 'Samuel founded ConsentIQ after watching compliance teams at adult-oriented platforms rebuild the same evidence from spreadsheets, inboxes and screenshots before every review. Samuel leads product, customers and every pilot, with a focus on traceable, professionally reviewed findings.', focus: ['Product', 'Consent & evidence', 'Customer pilots']},
+    {name: "Adaobi Nwosu", role: "Co-founder", initials: "AN", bio: "Adaobi leads customer success at ConsentIQ: onboarding compliance teams, shaping the review workflow with compliance officers and DPOs and turning their feedback into product changes.", focus: ["Compliance operations", "Pilot onboarding", "Review workflows"]},
+    {name: "Segun Afolabi", role: "CTO", initials: "SA", bio: "Segun leads engineering: document extraction, consent record checks, policy comparison, source-linked findings, encrypted evidence storage and the AWS platform it runs on.", focus: ["Platform architecture", "Document intelligence", "AWS infrastructure"]},
   ],
   app: {
     title: 'Compliance workspace',

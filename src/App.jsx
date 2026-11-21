@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {flushSync} from 'react-dom';
 import site from './content.js';
+import {Count, Cycle, Marquee, Stats, Words} from './Flow.jsx';
 import {CURRENT, POLICY, controls, evidence, records} from './data.js';
 import {checkRecord, gaps} from './engine.js';
 import {ACROSS, SERVICES, STAGES, WHY} from './aws.js';
@@ -40,14 +41,19 @@ function Header() {
   );
 }
 
+const CYCLE = ["adult subscription platforms", "wellness marketplaces", "digital service providers"];
+const MQ = ["Adult subscription platforms", "Wellness marketplaces", "Digital service providers", "Policy versions", "Consent records", "Evidence locker", "Potential gaps", "Review tasks", "Source monitoring", "Audit trail", "Compliance officers", "Data protection officers"];
+const STATS = [[16, "consent records checked"], [7, "controls in the sample framework"], [6, "evidence items with review dates"], [6, "checks run on every record"]];
+
 function Hero() {
   const c3 = G.find((g) => g.id === 'CTL-03');
   return (
     <section className="hero">
       <div className="hero-copy">
         <p className="label" data-r>Compliance management · adult-oriented digital businesses</p>
-        <h1 data-r>Organize compliance <span className="hl">with confidence.</span></h1>
+        <h1 data-r><Words>Organize compliance <span className="hl">with confidence.</span></Words></h1>
         <p className="lede" data-r style={{'--d': '160ms'}}>ConsentIQ is a proposed platform that keeps your policies, consent records, audit evidence and reviews in one organised place — and shows every potential gap next to the clause and the records behind it, so qualified people can decide what it means.</p>
+        <p className="fcy" data-r style={{'--d': '200ms'}}><Cycle lead="Built for" items={CYCLE} /></p>
         <div className="cta" data-r style={{'--d': '240ms'}}><a className="btn" href="#demo" data-magnetic>Request a demo</a><a className="btn ghost" href="/app">Open the workspace</a></div>
       </div>
       <div className="paper" data-r style={{'--d': '200ms'}}>
@@ -176,8 +182,7 @@ function Technology() {
 }
 
 function Team() {
-  const p = site.team[0];
-  return <section className="sec" id="team" aria-labelledby="team-title"><div className="team" data-r><span className="av" aria-hidden="true">{p.initials}</span><div><p className="label">Founder</p><h2 id="team-title">{p.name}</h2><p>{p.bio}</p><ul className="tags">{p.focus.map((f) => <li key={f}>{f}</li>)}</ul></div></div></section>;
+  return <section className="sec" id="team" aria-labelledby="team-title"><div className="team-head"><p className="label">Founding team</p><h2 id="team-title">The people building {site.name}.</h2></div><div className="team-list">{site.team.map((p, i) => (<div key={p.name} style={{'--d': `${i * 90}ms`}} className="team" data-r><span className="av" aria-hidden="true">{p.initials}</span><div><p className="label">{p.role}</p><h3 className="tname">{p.name}</h3><p>{p.bio}</p><ul className="tags">{p.focus.map((f) => <li key={f}>{f}</li>)}</ul></div></div>))}</div></section>;
 }
 
 function Demo() {
@@ -212,7 +217,7 @@ function Footer() {
   );
 }
 
-function Home() { return (<><Hero /><Method /><Features /><Checks /><Principles /><Who /><Pricing /><Technology /><Team /><Demo /><Faq /><Contact /></>); }
+function Home() { return (<><Hero /><Marquee items={MQ} label="Who and what it is built for" /><Stats items={STATS} /><Method /><Features /><Checks /><Principles /><Who /><Pricing /><Technology /><Team /><Demo /><Faq /><Contact /></>); }
 
 const LEGAL = {
   privacy: ['Privacy notice', [['This website', 'ConsentIQ is a proposed product. This website and the compliance workspace run in your browser on fictional data.'], ['Compliance workspace', 'Your changes are kept in your browser’s local storage (key consentiq-workspace-v1) and never leave your device.'], ['Forms', `Until a form service is connected, the demo and contact forms open a pre-filled email to ${site.email}; nothing is sent until you send it. Please do not send consent records or confidential documents through the forms.`], ['Cookies & analytics', 'None.']]],
